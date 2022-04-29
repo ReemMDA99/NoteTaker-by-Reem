@@ -31,17 +31,17 @@ const id = require('id');
 
 // create REST APIs (https://www.restapitutorial.com/lessons/httpmethods.html)
 //Create GET request and response for function
-
+//GET /api/notes should read the db.json file and return all saved notes as JSON.
 router.get('/api/notes', (req, res) => {
     fs.readFile('./db/db.json', 'utf8', (err,data) => {
         if (err) throw err;
     
         console.log(JSON.parse(data));
 
-        res.sendFile(data)
+        res.json(data)
     })
 })
-
+//POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 //Create POST request and response for functions
 router.post('/api/notes', (req, res) => {
         let addNotes = {
@@ -61,10 +61,23 @@ router.post('/api/notes', (req, res) => {
         fs.writeFile('./db/db.json', JSON.stringify(addData), (err) => {
             if (err) throw err;
         
-        res.sendFile("Successfully added new note!");
+        res.json("Successfully added new note!");
         })
     });
 })
+
+
+// Create REST api route functions for htmlRoutes.js 
+    //GET notes from notes.html
+router.get('/notes', (req, res)=> {
+    res.sendFile(path.join(__dirname, '../../public/notes.html'));
+
+})
+    //GET notes from index.html
+router.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../public/index.html'));
+});
+
 //Use api routers to point our server to all route files
 app.use('/api', apiRoutes);
 app.use('/', htmlRoutes);
