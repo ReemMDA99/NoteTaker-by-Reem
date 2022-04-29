@@ -66,6 +66,32 @@ router.post('/api/notes', (req, res) => {
     });
 })
 
+//Add delete parameters using delete by notes id
+
+app.delete('/api/notes/:id',(req, res) {
+    fs.readFile('./db/db/json', 'utf8', (err, data) => {
+        if (err) throw err;
+
+        let thisNotes = JSON.parse(data);
+        let thisNotesId = req.params.id;
+        let newNoteId = 0;
+        
+    thisNotes = thisNotes.filter(presentNotes => {
+        return presentNotes.id != thisNotesId;
+    });
+
+    for (presentNotes of thisNotes) {
+        presentNotes.id = newNoteId.toString();
+    }
+
+    fs.writeFileSync('./db/db.json', JSON.stringify(thisNotes),(err, data) => {
+        if (err) throw err;
+        console.log("Done!")
+    });
+    res.send(thisNotes);
+    });
+})
+
 
 // Create REST api route functions for htmlRoutes.js 
     //GET notes from notes.html
@@ -73,7 +99,7 @@ router.get('/notes', (req, res)=> {
     res.sendFile(path.join(__dirname, '../../public/notes.html'));
 
 })
-    //GET notes from index.html
+// GET * - Should return the index.html file
 router.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../../public/index.html'));
 });
