@@ -67,8 +67,8 @@ router.post('/api/notes', (req, res) => {
 })
 
 //Add delete parameters using delete by notes id
-
-app.delete('/api/notes/:id',(req, res) {
+//DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete. In order to delete a note, you'll need to read all notes from the db.json file, remove the note with the given id property, and then rewrite the notes to the db.json file.
+app.delete('/api/notes/:id', function (req, res) {
     fs.readFile('./db/db/json', 'utf8', (err, data) => {
         if (err) throw err;
 
@@ -89,9 +89,8 @@ app.delete('/api/notes/:id',(req, res) {
         console.log("Done!")
     });
     res.send(thisNotes);
+        });
     });
-})
-
 
 // Create REST api route functions for htmlRoutes.js 
     //GET notes from notes.html
