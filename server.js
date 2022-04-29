@@ -1,3 +1,5 @@
+//(Create the files similar to zookeeper modules)
+
 //Add necessary dependencies to the file
 const express = require('express');
 const app = express();
@@ -23,9 +25,9 @@ app.use(express.static('public'));
 //Create GET request and response for functions
 
 
-//create router files
-
-//Add require routers
+//Use api routers to point our server to all route files
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 //Add Listen port in the end to initiate server
 app.listen(PORT, () => {
