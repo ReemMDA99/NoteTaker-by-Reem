@@ -8,7 +8,7 @@
     "dev": "nodemon server.js",
     "start": "node server.js"
   },
-  "author": "Reem",
+  "author": "Reem Ahmed",
   "license": "MIT",
   "dependencies": {
     "express": "^4.16.4",
