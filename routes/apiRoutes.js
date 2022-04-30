@@ -14,7 +14,7 @@ const uniqID = require('uniq-id');
 //Create GET request and response for function
 //GET /api/notes should read the db.json file and return all saved notes as JSON.
 router.get('/api/notes', (req, res) => {
-    fs.readFile('../db/db.json', 'utf8', (err,data) => {
+    fs.readFile('../db/db.json', (err, data) => {
         if (err) throw err;
     
         console.log(JSON.parse(data));
@@ -30,7 +30,7 @@ router.post('/api/notes', (req, res) => {
             title: req.body.title,
             text: req.body.text
         }
-fs.readFile('../db/db.json', 'utf8', (err, data) => {
+fs.readFile('../db/db.json',  (err, data) => {
         if (err) throw err;
         let addData = JSON.parse(data);
         
@@ -43,7 +43,7 @@ fs.readFile('../db/db.json', 'utf8', (err, data) => {
 fs.writeFile('../db/db.json', JSON.stringify(addData), (err) => {
             if (err) throw err;
         
-        res.json("Successfully added new note!");
+        res.send("Successfully added new note!");
         })
     });
 })
