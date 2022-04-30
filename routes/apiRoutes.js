@@ -40,8 +40,8 @@ router.post('/', (req, res) => {
         
         data.push(addJSON);
     
-       // console.log(JSON.parse(data));
-        console.log(addData)
+    //    // console.log(JSON.parse(data));
+    //     console.log(addData)
 
     //Now create filesystem module to write file and stringify in JSON
 // fs.writeFile('../db/db.json', JSON.stringify(addData), (err) => {
