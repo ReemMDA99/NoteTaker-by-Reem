@@ -25,8 +25,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 //Use api routers to point our server to all route files
-app.use('/api/notes', require('./routes/apiRoutes'));
-app.use('/', require('./routes/htmlRoutes'));
+app.use('/api', apiRoutes);
+app.use('/', htmlRoutes);
 
 
 //Add Listen port in the end to initiate server

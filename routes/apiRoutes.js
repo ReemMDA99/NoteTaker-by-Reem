@@ -12,13 +12,13 @@ const uniqID = require('uniq-id');
 // create REST APIs (https://www.restapitutorial.com/lessons/httpmethods.html)
 //Create GET request and response for function
 //GET /api/notes should read the db.json file and return all saved notes as JSON.
-router.get('/api/notes', (req, res) => {
-    fs.readFile('../db/db.json', (err, data) => {
-         if (err) throw err;
-            console.log(JSON.parse(data));
+router.get('/api/notes', (req, res) =>  {
+        fs.readFile('./db/db.json', (err, data) => {
+        if (err) throw err;
+          console.log(JSON.parse(data));
             res.json(data);
     })
-});
+ });
 
 //POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 //Create POST request and response for functions
@@ -32,18 +32,17 @@ router.get('/api/notes', (req, res) => {
             text: addText
         }
 
-    fs.readFile('../db/db.json', (err, data) => {
+    fs.readFile('./db/db.json', (err, data) => {
         if(err) throw err;
         
         let addData = JSON.parse(data);
-    
-      
         console.log(addData);
         console.log(addJson);
 
         addData.push(addJson);
+
   // Now create filesystem module to write file and stringify in JSON
-    fs.writeFile('../db/db.json', JSON.stringify(data), (err) => {
+    fs.writeFile('./db/db.json', JSON.stringify(addData), (err) => {
             if (err) throw err; 
             console.log("New note successfully added!");
 
