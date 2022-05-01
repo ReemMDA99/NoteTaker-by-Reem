@@ -1,8 +1,9 @@
 //Now sort api route functions from server.js to apiRoutes to modularize the code
 //Add necessary dependencies to the file
+const router = require('express').Router();
 const fs = require('fs');
 const express = require('express');
-const router = require('express').Router();
+
 
 //extract database folder 
 const data = require('../db/db.json');
@@ -13,7 +14,7 @@ const uniqID = require('uniq-id');
 // create REST APIs (https://www.restapitutorial.com/lessons/httpmethods.html)
 //Create GET request and response for function
 //GET /api/notes should read the db.json file and return all saved notes as JSON.
-router.get('/notes', (req, res) =>  
+router.get('/', (req, res) =>  
 // // {
 //         fs.readFile('./db/db.json', (err, data) => {
 //         if (err) throw err;
@@ -22,7 +23,7 @@ router.get('/notes', (req, res) =>
 
 //POST /api/notes should receive a new note to save on the request body, add it to the db.json file, and then return the new note to the client.
 //Create POST request and response for functions
-    router.post('/notes', (req, res) => {
+    router.post('/', (req, res) => {
     const addTitle = req.body.title;
     const addText = req.body.text;
         if (!addTitle || !addText) {
@@ -79,3 +80,4 @@ router.get('/notes', (req, res) =>
 //         });
 
 module.exports = router;
+

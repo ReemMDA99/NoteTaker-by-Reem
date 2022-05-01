@@ -5,6 +5,15 @@
 const express = require('express');
 const path = require('path');
 
+//Create PORT and then add it to the listener in the end of this file
+// use 3002 instead of 3001 as 3001 is already in use
+const PORT = process.env.PORT || 3001;
+
+// Add express configurations to create express server
+const apiRoutes = require('./routes/apiRoutes');
+const htmlRoutes = require('./routes/htmlRoutes');
+
+
 //load express.js
 const app = express();
 
@@ -17,21 +26,13 @@ app.use(express.json());
 // Host public folder to serve static assets
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Add express configurations to create express server
-const apiRoutes = require('./routes/apiRoutes');
-const htmlRoutes = require('./routes/htmlRoutes');
-
 //Use api routers to point our server to all route files
 app.use('/api/notes', apiRoutes);
 app.use('/', htmlRoutes);
-
-//Create PORT and then add it to the listener in the end of this file
-// use 3002 instead of 3001 as 3001 is already in use
-const PORT = process.env.PORT || 3002;
 
 //Add Listen port in the end to initiate server
 app.listen(PORT, () => {
     console.log(`API server now on port ${PORT}!`);
   });
   
-//End of server.js
+//End of server.
