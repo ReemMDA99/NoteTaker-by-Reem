@@ -7,7 +7,7 @@ const path = require('path');
 
 //Create PORT and then add it to the listener in the end of this file
 // use 3002 instead of 3001 as 3001 is already in use
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 
 // Add express configurations to create express server
 const apiRoutes = require('./routes/apiRoutes');
