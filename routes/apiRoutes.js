@@ -8,9 +8,9 @@ const express = require('express');
 const data = require('../db/db.json');
 
 //To install unique ID use npm package 'uniqID' and install using 'npm i uniq-id' command in terminal
-const uniqID = require('uniq-id');
+//const uniqID = require('uniq-id');
+var uniqid = require('uniqid'); 
 
-// create REST APIs (https://www.restapitutorial.com/lessons/httpmethods.html)
 //Create GET request and response for function
 //GET /api/notes should read the db.json file and return all saved notes as JSON.
     router.get('/', (req, res) =>  
@@ -22,7 +22,7 @@ const uniqID = require('uniq-id');
         router.post('/', (req, res) => {
 
             const addData = {
-                id: uniqID(),
+                id: uniqid(),
                 title: req.body.title,
                 text: req.body.text
             };  
@@ -64,7 +64,7 @@ module.exports= function (app)  {
                 }
                 fs.writeFileSync('./db/db.json', JSON.stringify(thisNotes),(err, data) => {
                     if (err) throw err;
-                    console.log("Deleted!")
+                    console.log("done!")
                 });
             res.send(thisNotes);
         });

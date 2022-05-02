@@ -43,7 +43,8 @@ http://localhost:3002/
   I have used the starter code for build this application. All contributions are welcomed. Please discuss before you make any changes.
   
   ## Tests
-  na
+  
+  Tested the application using Insomnia
 
   ## License
   
@@ -71,6 +72,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 - Node.js
 - Express.js
 - JavaScript
+- Insomnia
 
 ## Screenshots
 ![image](./Assets/Picture1.png)
