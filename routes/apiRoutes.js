@@ -31,19 +31,7 @@ var uniqid = require('uniqid');
         });
 // create readFile file system module to read and parse in JSON
 module.exports= function (app)  {
-        fs.readFile('./db/db.json', (err, data) => {
-            if(err) throw err;
-
-            const addNote = JSON.parse(data);
-
-        console.log(addNote);
-        console.log(addJson);
-    })
-// Now create filesystem module to write file and stringify in JSON
-  fs.writeFile('./db/db.json', JSON.stringify(addNote), (err) => { 
-        if (err) throw err; 
-            console.log("New note successfully added!");
-    });
+       
 //Add delete parameters using delete by notes id
 //DELETE /api/notes/:id should receive a query parameter containing the id of a note to delete.
 
