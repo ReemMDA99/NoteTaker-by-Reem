@@ -46,6 +46,11 @@ http://localhost:3002/
   
   Tested the application using Insomnia
 
+  
+![image](./Assets/Picture3.png)
+
+![image](./Assets/Picture4.png)
+
   ## License
   
     This project is covered under the following license:
@@ -78,6 +83,7 @@ SO THAT I can organize my thoughts and keep track of tasks I need to complete
 ![image](./Assets/Picture1.png)
 
 ![image](./Assets/Picture2.png)
+
 
 ## Demo
 
